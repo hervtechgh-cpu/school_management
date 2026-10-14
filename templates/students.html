@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration | SchoolMS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h2>SchoolMS</h2>
+            <nav>
+                <a href="/">Dashboard</a>
+                <a href="/students" class="active">Students</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Student Registration</h1>
+                    <p>Register a student at The Des Fes STEM School.</p>
+                </div>
+                <div class="admin">Administrator</div>
+            </header>
+
+            <section class="panel">
+                <h2>Student Details</h2>
+
+                <form method="POST" action="/students">
+                    <label for="student_id">Student ID</label>
+                    <input type="text" id="student_id" name="student_id"
+                           placeholder="e.g. DFS001" required>
+
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name"
+                           required>
+
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name"
+                           required>
+
+                    <label for="class_name">Class</label>
+                    <input type="text" id="class_name" name="class_name"
+                           placeholder="e.g. JHS 1" required>
+
+                    <label for="guardian_phone">Guardian Phone</label>
+                    <input type="tel" id="guardian_phone" name="guardian_phone"
+                           placeholder="Guardian's contact number">
+
+                    <button type="submit">Register Student</button>
+                </form>
+            </section>
+
+            <section class="panel">
+                <h2>Registered Students</h2>
+
+                {% if students %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Class</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students %}
+                            <tr>
+                                <td>{{ student.student_id }}</td>
+                                <td>{{ student.first_name }} {{ student.last_name }}</td>
+                                <td>{{ student.class_name }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>No students registered yet.</p>
+                {% endif %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

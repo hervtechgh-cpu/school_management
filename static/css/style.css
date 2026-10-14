@@ -19,7 +19,7 @@ body {
     width: 240px;
     background-color: #173b6c;
     color: white;
-    padding: 25px 15px;
+    padding: 20px 10px;
     flex-shrink: 0;
 }
 
@@ -76,7 +76,7 @@ body {
 
 .admin {
     background-color: white;
-    padding: 12px 16px;
+    padding: 10px 14px;
     border-radius: 8px;
     font-weight: bold;
     font-size: 14px;
